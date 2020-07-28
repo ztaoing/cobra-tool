@@ -1,30 +1,18 @@
 /**
 * @Author:zhoutao
-* @Date:2020/7/28 上午9:28
+* @Date:2020/7/27 下午11:18
  */
 
 package main
 
 import (
-	"os"
-	"strings"
-	"text/template"
+	"cobra-tool/cmd"
+	"log"
 )
 
-const templateText = `
-OutPut 0:{{title .Name1}}
-OutPut 1:{{tile .Name2}}
-OutPut 2:{{.Name3 | title}}
-`
-
 func main() {
-	funcMap := template.FuncMap{"title": strings.Title}
-	tpl, _ := template.New("go-programming").Funcs(funcMap).Parse(templateText)
-
-	data := map[string]string{
-		"Name1": "go",
-		"Name2": "programming",
-		"Name3": "tour",
+	err := cmd.Execute()
+	if err != nil {
+		log.Fatalf("cmd.Execute err:%v", err)
 	}
-	_ = tpl.Execute(os.Stdout, data)
 }

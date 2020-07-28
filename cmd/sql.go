@@ -29,7 +29,7 @@ var sqlCmd = &cobra.Command{
 }
 
 var sql2structCmd = &cobra.Command{
-	Use:   "struc",
+	Use:   "struct",
 	Short: "sql转换",
 	Long:  "sql转换",
 	Run: func(cmd *cobra.Command, args []string) {
